@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toutes les annonces – Église Sainte Rita de Wuiti</title>
+  
+  <!-- Meta tags pour référencement et partage -->
+  <meta name="description" content="Découvrez toutes les annonces, événements et actualités de l'Église Sainte Rita de Wuiti à Lomé, Togo. Restez informé de la vie de notre communauté paroissiale.">
+  <meta name="keywords" content="annonces église, actualités paroissiales, événements catholiques, messes, activités paroissiales, Sainte Rita Wuiti">
+  <meta property="og:title" content="Annonces Paroissiales – Église Sainte Rita de Wuiti">
+  <meta property="og:description" content="Toutes les annonces et événements de notre communauté chrétienne à Lomé">
+  <meta property="og:image" content="https://image.noelshack.com/fichiers/2025/22/5/1748575787-499783337-1027131529552463-7182311396753938463-n.jpg">
+  
+  <!-- Styles et scripts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- Police Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="https://i.postimg.cc/kgkF1zBd/church-48dp-B89230-FILL0-wght200-GRAD0-opsz48.png" type="image/png">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-gold': '#d97706',
+            'primary-dark': '#b45309',
+            'accent-blue': '#1e40af',
+            'bg-light': '#f8f5f2',
+          },
+          fontFamily: {
+            'playfair': ['Playfair Display', 'serif'],
+            'poppins': ['Poppins', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    :root {
+      --primary: #d97706;
+      --primary-dark: #b45309;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f5f2;
+      color: #333333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    
+    .heading-font {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.9) 0%, rgba(180, 83, 9, 0.9) 100%), 
+                  url('https://images.unsplash.com/photo-1510924199358-6d5a7d4e5f80?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    
+    .announcement-card {
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e5e7eb;
+      background: white;
+    }
+    
+    .announcement-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+    
+    .urgent-badge {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: white;
+      font-weight: bold;
+    }
+    
+    .info-badge {
+      background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+      color: white;
+      font-weight: bold;
+    }
+    
+    .event-badge {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      font-weight: bold;
+    }
+    
+    .prayer-badge {
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      color: white;
+      font-weight: bold;
+    }
+    
+    .category-filter {
+      transition: all 0.2s ease;
+    }
+    
+    .category-filter.active {
+      background-color: #d97706;
+      color: white;
+      transform: scale(1.05);
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+      transition: all 0.3s ease;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(217, 119, 6, 0.3);
+    }
+    
+    .date-badge {
+      background-color: #fef3c7;
+      color: #92400e;
+      font-weight: bold;
+    }
+    
+    .pagination-btn {
+      transition: all 0.2s ease;
+    }
+    
+    .pagination-btn:hover:not(.disabled) {
+      background-color: #fef3c7;
+      transform: translateY(-2px);
+    }
+    
+    .pagination-btn.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
+  </style>
+</head>
+
+<body class="bg-bg-light text-gray-900 antialiased">
+  <!-- Navigation -->
+  <header class="sticky top-0 w-full bg-white shadow-md z-50">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <i class="fas fa-church text-2xl text-primary-gold mr-2"></i>
+          <a href="index.html" class="heading-font text-xl md:text-2xl font-bold text-gray-800">
+            Église Sainte Rita
+            <span class="text-sm bg-yellow-100 text-primary-gold px-2 py-1 rounded-full ml-2 font-medium">Wuiti</span>
+          </a>
+        </div>
+        
+        <nav class="hidden md:flex space-x-6 items-center">
+          <a href="index.html" class="text-gray-700 hover:text-primary-gold font-medium flex items-center">
+            <i class="fas fa-home mr-1"></i> Accueil
+          </a>
+          <a href="#all-announcements" class="text-primary-gold font-bold border-b-2 border-primary-gold pb-1">
+            <i class="fas fa-bullhorn mr-1"></i> Annonces
+          </a>
+          <a href="index.html#events" class="text-gray-700 hover:text-primary-gold font-medium">
+            <i class="fas fa-calendar-alt mr-1"></i> Événements
+          </a>
+          <a href="index.html#connect" class="text-gray-700 hover:text-primary-gold font-medium">
+            <i class="fas fa-phone-alt mr-1"></i> Contact
+          </a>
+        </nav>
+        
+        <div class="md:hidden">
+          <button id="mobile-menu-toggle" class="text-gray-700 focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Menu mobile -->
+      <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white border-t pt-4">
+        <div class="flex flex-col space-y-3">
+          <a href="index.html" class="text-gray-700 hover:text-primary-gold font-medium py-2 border-b border-gray-100">
+            <i class="fas fa-home mr-2"></i> Accueil
+          </a>
+          <a href="#all-announcements" class="text-primary-gold font-bold py-2 border-b border-gray-100">
+            <i class="fas fa-bullhorn mr-2"></i> Annonces
+          </a>
+          <a href="index.html#events" class="text-gray-700 hover:text-primary-gold font-medium py-2 border-b border-gray-100">
+            <i class="fas fa-calendar-alt mr-2"></i> Événements
+          </a>
+          <a href="index.html#connect" class="text-gray-700 hover:text-primary-gold font-medium py-2">
+            <i class="fas fa-phone-alt mr-2"></i> Contact
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient py-16 md:py-24 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-20"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="mb-4">
+          <span class="bg-white bg-opacity-20 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-sm font-semibold tracking-wider">
+            <i class="fas fa-bullhorn mr-1"></i> Actualités Paroissiales
+          </span>
+        </div>
+        <h1 class="heading-font text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+          Toutes les <span class="text-yellow-300">Annonces</span>
+        </h1>
+        <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto font-light text-gray-100">
+          Restez informé des activités, événements et actualités de notre communauté chrétienne. 
+          Ne manquez aucun moment important de la vie paroissiale.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#all-announcements" class="btn-primary px-6 py-3 rounded-full font-bold inline-flex items-center">
+            <i class="fas fa-list mr-2"></i> Voir toutes les annonces
+          </a>
+          <a href="index.html#events" class="bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-6 py-3 rounded-full font-bold inline-flex items-center transition">
+            <i class="fas fa-calendar-alt mr-2"></i> Calendrier des événements
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section principale des annonces -->
+  <main class="py-12 md:py-16">
+    <div class="container mx-auto px-4">
+      <!-- Filtres par catégorie -->
+      <div class="mb-12" data-aos="fade-up">
+        <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">Filtrer par catégorie</h2>
+        <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-8">
+          <button class="category-filter active px-5 py-2.5 rounded-full bg-primary-gold text-white font-medium" data-category="all">
+            <i class="fas fa-layer-group mr-2"></i> Toutes
+          </button>
+          <button class="category-filter px-5 py-2.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 font-medium" data-category="urgent">
+            <i class="fas fa-exclamation-circle mr-2"></i> Urgent
+          </button>
+          <button class="category-filter px-5 py-2.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 font-medium" data-category="event">
+            <i class="fas fa-calendar-star mr-2"></i> Événements
+          </button>
+          <button class="category-filter px-5 py-2.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 font-medium" data-category="messe">
+            <i class="fas fa-church mr-2"></i> Messes
+          </button>
+          <button class="category-filter px-5 py-2.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 font-medium" data-category="prayer">
+            <i class="fas fa-hands-praying mr-2"></i> Prières
+          </button>
+        </div>
+        
+        <!-- Barre de recherche -->
+        <div class="max-w-md mx-auto mb-10">
+          <div class="relative">
+            <input type="text" id="search-announcements" placeholder="Rechercher une annonce..." 
+                   class="w-full px-5 py-3.5 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-gold focus:border-transparent shadow-sm">
+            <button class="absolute right-3 top-3 text-gray-400 hover:text-primary-gold">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Liste des annonces -->
+      <div id="all-announcements" class="mb-16">
+        <div class="flex justify-between items-center mb-8">
+          <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800">
+            <i class="fas fa-newspaper text-primary-gold mr-2"></i> Toutes les annonces
+          </h2>
+          <span class="text-gray-600 font-medium" id="announcement-count">15 annonces</span>
+        </div>
+        
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="announcements-container">
+          <!-- Annonce 1 -->
+          <div class="announcement-card fade-in" data-category="urgent" data-aos="fade-up" data-aos-delay="100">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span class="urgent-badge px-3 py-1 rounded-full text-xs inline-flex items-center mb-2">
+                    <i class="fas fa-exclamation-triangle mr-1"></i> URGENT
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-800 mb-1">Changement d'horaire exceptionnel</h3>
+                </div>
+                <span class="date-badge px-3 py-1 rounded-full text-sm">22 Sept 2025</span>
+              </div>
+              <p class="text-gray-600 mb-5">
+                En raison de travaux de rénovation dans l'église, la messe du dimanche 28 septembre à 8h00 est reportée à 9h00.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-clock mr-2"></i>
+                <span>Nouvel horaire: 9h00</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Annonce 2 -->
+          <div class="announcement-card fade-in" data-category="event" data-aos="fade-up" data-aos-delay="150">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span class="event-badge px-3 py-1 rounded-full text-xs inline-flex items-center mb-2">
+                    <i class="fas fa-calendar-star mr-1"></i> ÉVÉNEMENT
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-800 mb-1">Concert de louange annuel</h3>
+                </div>
+                <span class="date-badge px-3 py-1 rounded-full text-sm">21 Sept 2025</span>
+              </div>
+              <p class="text-gray-600 mb-5">
+                Soirée exceptionnelle de louange avec notre chorale paroissiale et des invités spéciaux. Ouvert à tous.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-clock mr-2"></i>
+                <span>18h00 - Salle paroissiale</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Annonce 3 -->
+          <div class="announcement-card fade-in" data-category="messe" data-aos="fade-up" data-aos-delay="200">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span class="info-badge px-3 py-1 rounded-full text-xs inline-flex items-center mb-2">
+                    <i class="fas fa-church mr-1"></i> MESSE
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-800 mb-1">Messe des malades</h3>
+                </div>
+                <span class="date-badge px-3 py-1 rounded-full text-sm">19 Sept 2025</span>
+              </div>
+              <p class="text-gray-600 mb-5">
+                Messe spéciale pour les malades et les personnes âgées avec imposition des mains et onction des malades.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-clock mr-2"></i>
+                <span>10h00 - Église Sainte Rita</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Annonce 4 -->
+          <div class="announcement-card fade-in" data-category="event" data-aos="fade-up" data-aos-delay="100">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span class="event-badge px-3 py-1 rounded-full text-xs inline-flex items-center mb-2">
+                    <i class="fas fa-users mr-1"></i> ÉVÉNEMENT
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-800 mb-1">Rencontre des jeunes</h3>
+                </div>
+                <span class="date-badge px-3 py-1 rounded-full text-sm">19 Sept 2025</span>
+              </div>
+              <p class="text-gray-600 mb-5">
+                Rencontre fraternelle pour les 15-25 ans avec partages bibliques, témoignages et temps de prière.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-clock mr-2"></i>
+                <span>20h00 - Salle des jeunes</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Annonce 5 -->
+          <div class="announcement-card fade-in" data-category="urgent" data-aos="fade-up" data-aos-delay="150">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span class="urgent-badge px-3 py-1 rounded-full text-xs inline-flex items-center mb-2">
+                    <i class="fas fa-exclamation-circle mr-1"></i> URGENT
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-800 mb-1">Collecte solidaire</h3>
+                </div>
+                <span class="date-badge px-3 py-1 rounded-full text-sm">22 Sept 2025</span>
+              </div>
+              <p class="text-gray-600 mb-5">
+                Collecte de vêtements, denrées non périssables et produits d'hygiène pour les familles démunies.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-clock mr-2"></i>
+                <span>Après la messe du dimanche</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Annonce 6 -->
+          <div class="announcement-card fade-in" data-category="prayer" data-aos="fade-up" data-aos-delay="200">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span class="prayer-badge px-3 py-1 rounded-full text-xs inline-flex items-center mb-2">
+                    <i class="fas fa-hands-praying mr-1"></i> PRIÈRE
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-800 mb-1">Adoration Eucharistique</h3>
+                </div>
+                <span class="date-badge px-3 py-1 rounded-full text-sm">Tous les jeudis</span>
+              </div>
+              <p class="text-gray-600 mb-5">
+                Un temps prolongé devant le Saint Sacrement pour la prière personnelle et communautaire. Ouvert à tous.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-clock mr-2"></i>
+                <span>18h30 - 19h30</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Annonce 7 -->
+          <div class="announcement-card fade-in" data-category="event" data-aos="fade-up" data-aos-delay="100">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span class="event-badge px-3 py-1 rounded-full text-xs inline-flex items-center mb-2">
+                    <i class="fas fa-heart mr-1"></i> ÉVÉNEMENT
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-800 mb-1">Fête patronale</h3>
+                </div>
+                <span class="date-badge px-3 py-1 rounded-full text-sm">22 Mai 2026</span>
+              </div>
+              <p class="text-gray-600 mb-5">
+                Grande fête en l'honneur de Sainte Rita de Cascia. Messe solennelle suivie d'une réception communautaire.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-clock mr-2"></i>
+                <span>Toute la journée</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Annonce 8 -->
+          <div class="announcement-card fade-in" data-category="event" data-aos="fade-up" data-aos-delay="150">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span class="event-badge px-3 py-1 rounded-full text-xs inline-flex items-center mb-2">
+                    <i class="fas fa-book-reader mr-1"></i> ÉVÉNEMENT
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-800 mb-1">Formation biblique</h3>
+                </div>
+                <span class="date-badge px-3 py-1 rounded-full text-sm">Chaque mercredi</span>
+              </div>
+              <p class="text-gray-600 mb-5">
+                Séminaire sur les Épîtres de Saint Paul, animé par le Père Jean-Baptiste. Inscription obligatoire.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-clock mr-2"></i>
+                <span>19h00 - Salle de conférence</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Annonce 9 -->
+          <div class="announcement-card fade-in" data-category="event" data-aos="fade-up" data-aos-delay="200">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span class="event-badge px-3 py-1 rounded-full text-xs inline-flex items-center mb-2">
+                    <i class="fas fa-ring mr-1"></i> ÉVÉNEMENT
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-800 mb-1">Promesse de mariage</h3>
+                </div>
+                <span class="date-badge px-3 py-1 rounded-full text-sm">25 Sept 2040</span>
+              </div>
+              <p class="text-gray-600 mb-5">
+                Promesse de mariage entre Bakar et Barrigah. Venez témoigner de votre soutien et prier pour les fiancés.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-clock mr-2"></i>
+                <span>14h30 - Église Sainte Rita</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="flex justify-center mt-12">
+          <div class="flex items-center space-x-2">
+            <button class="pagination-btn disabled w-10 h-10 rounded-full flex items-center justify-center text-gray-400">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="pagination-btn w-10 h-10 rounded-full flex items-center justify-center bg-primary-gold text-white font-bold">
+              1
+            </button>
+            <button class="pagination-btn w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100">
+              2
+            </button>
+            <button class="pagination-btn w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100">
+              3
+            </button>
+            <span class="px-2 text-gray-500">...</span>
+            <button class="pagination-btn w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100">
+              5
+            </button>
+            <button class="pagination-btn w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Section info importante -->
+      <div class="bg-gradient-to-r from-primary-gold to-primary-dark rounded-2xl p-8 md:p-10 text-white mb-16" data-aos="fade-up">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-2/3 mb-6 md:mb-0 md:pr-8">
+            <h3 class="heading-font text-2xl md:text-3xl font-bold mb-4">Ne manquez aucune annonce importante</h3>
+            <p class="mb-4 text-yellow-100">
+              Abonnez-vous à notre liste de diffusion pour recevoir les annonces paroissiales directement dans votre boîte email.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input type="email" placeholder="Votre adresse email" 
+                     class="flex-grow px-4 py-3 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300">
+              <button class="btn-primary px-6 py-3 rounded-full font-bold whitespace-nowrap">
+                <i class="fas fa-paper-plane mr-2"></i> S'abonner
+              </button>
+            </div>
+            <p class="text-sm text-yellow-200 mt-3">
+              <i class="fas fa-lock mr-1"></i> Vos informations sont sécurisées et ne seront jamais partagées.
+            </p>
+          </div>
+          <div class="md:w-1/3 text-center">
+            <div class="bg-white bg-opacity-20 p-6 rounded-2xl inline-block">
+              <i class="fas fa-envelope-open-text text-6xl text-yellow-300 mb-4"></i>
+              <p class="font-bold">Recevez les annonces par email</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bouton retour -->
+      <div class="text-center">
+        <a href="index.html" class="btn-primary px-8 py-3.5 rounded-full font-bold inline-flex items-center text-lg">
+          <i class="fas fa-arrow-left mr-3"></i> Retour à l'accueil
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 pt-12 pb-8">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-12">
+        <div>
+          <div class="flex items-center mb-4">
+            <i class="fas fa-church text-3xl text-primary-gold mr-3"></i>
+            <span class="heading-font text-2xl font-bold text-white">Église Sainte Rita</span>
+          </div>
+          <p class="text-sm leading-relaxed mb-6">
+            Une communauté chrétienne vibrante, unie dans la prière et le service de Dieu et des hommes.
+          </p>
+          <div class="flex space-x-5">
+            <a href="https://facebook.com/paroisse.sainteritadetokoinwuiti" target="_blank" rel="noopener noreferrer" aria-label="Notre page Facebook"
+                class="text-gray-400 hover:text-primary-gold transition transform hover:scale-110">
+              <i class="fab fa-facebook-f text-xl"></i>
+            </a>
+            <a href="https://www.youtube.com/@paroissesainteritadetokoin6788" target="_blank" rel="noopener noreferrer" aria-label="Notre chaîne YouTube"
+                class="text-gray-400 hover:text-primary-gold transition transform hover:scale-110">
+              <i class="fab fa-youtube text-xl"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-lg">Liens rapides</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="index.html" class="hover:text-primary-gold transition">Accueil</a></li>
+            <li><a href="#all-announcements" class="hover:text-primary-gold transition">Annonces</a></li>
+            <li><a href="index.html#events" class="hover:text-primary-gold transition">Événements</a></li>
+            <li><a href="index.html#connect" class="hover:text-primary-gold transition">Contact & Carte</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-lg">Services</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#" class="hover:text-primary-gold transition">Messes</a></li>
+            <li><a href="#" class="hover:text-primary-gold transition">Catéchèse</a></li>
+            <li><a href="#" class="hover:text-primary-gold transition">Mariages</a></li>
+            <li><a href="#" class="hover:text-primary-gold transition">Baptêmes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-lg">Contact</h4>
+          <ul class="space-y-4 text-sm">
+            <li class="flex items-start">
+              <i class="fas fa-envelope text-yellow-500 mr-3 mt-1 flex-shrink-0"></i>
+              <a href="mailto:sainte.rita.tokoin.wuiti@gmail.com" class="hover:text-primary-gold transition break-all">sainte.rita.tokoin.wuiti@gmail.com</a>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-yellow-500 mr-3 mt-1 flex-shrink-0"></i>
+              <span>1 Tokoin Wuiti, Lomé, Togo</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone-alt text-yellow-500 mr-3 mt-1 flex-shrink-0"></i>
+              <a href="tel:+228 90578833" class="hover:text-primary-gold transition">+228 90 57 88 33</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 mt-12 pt-6 pb-8 text-center">
+        <p class="text-xs text-gray-500">
+          © 2025 Église Sainte Rita de Wuiti. Tous droits réservés. | Conçu pour la Gloire de Dieu.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialisation de AOS
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+
+    // Gestion du menu mobile
+    document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+
+    // Gestion des filtres de catégories
+    const filterButtons = document.querySelectorAll('.category-filter');
+    const announcementCards = document.querySelectorAll('.announcement-card');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Retirer la classe active de tous les boutons
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active', 'bg-primary-gold', 'text-white');
+          btn.classList.add('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+        });
+        
+        // Ajouter la classe active au bouton cliqué
+        this.classList.remove('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+        this.classList.add('active', 'bg-primary-gold', 'text-white');
+        
+        // Filtrer les annonces
+        const category = this.getAttribute('data-category');
+        
+        announcementCards.forEach(card => {
+          if (category === 'all' || card.getAttribute('data-category') === category) {
+            card.style.display = 'block';
+            setTimeout(() => {
+              card.classList.add('fade-in');
+            }, 10);
+          } else {
+            card.classList.remove('fade-in');
+            card.style.display = 'none';
+          }
+        });
+        
+        // Mettre à jour le compteur
+        updateAnnouncementCount(category);
+      });
+    });
+    
+    // Fonction pour mettre à jour le compteur d'annonces
+    function updateAnnouncementCount(category) {
+      let count = 0;
+      
+      if (category === 'all') {
+        count = announcementCards.length;
+      } else {
+        announcementCards.forEach(card => {
+          if (card.getAttribute('data-category') === category) {
+            count++;
+          }
+        });
+      }
+      
+      document.getElementById('announcement-count').textContent = `${count} annonce${count > 1 ? 's' : ''}`;
+    }
+    
+    // Recherche d'annonces
+    document.getElementById('search-announcements').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      
+      announcementCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const content = card.querySelector('p').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || content.includes(searchTerm)) {
+          card.style.display = 'block';
+          setTimeout(() => {
+            card.classList.add('fade-in');
+          }, 10);
+        } else {
+          card.classList.remove('fade-in');
+          card.style.display = 'none';
+        }
+      });
+    });
+    
+    // Initialisation du compteur
+    updateAnnouncementCount('all');
+    
+    // Fermer le menu mobile quand on clique sur un lien
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

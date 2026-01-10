@@ -1,0 +1,15 @@
+# Optimisé pour Netlify - Église Sainte Rita
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /tmp/
+
+# Netlify specific
+Disallow: /.netlify/
+Disallow: /404.html
+
+# Sitemap
+Sitemap: https://eglise-sainte-rita-wuiti.netlify.app/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
